@@ -1,6 +1,9 @@
 # Technoshop
 ## API
 
+Для запуска API необходимо установить Node.JS
+RUN: `node index.js`
+
 Доступные методы:
 `GET` /api/category - получить список категорий
 `POST` /api/goods - создать товар, в теле запроса нужно передать объект {title: string,price: number,display: number,description: string, category: string,image: string}
