@@ -13,10 +13,12 @@ export const hidePreview = () => {
 
 export const previewController = () => {
   const imageFile = form.image;
-  imageFile.addEventListener("change", async () => {
-    if (imageFile.files.length) {
-      const src = await toBase64(imageFile.files[0]);
-      showPreview(src);
-    }
+  image.addEventListener("change", async () => {
+    imageFile.addEventListener("change", async () => {
+      if (imageFile.files.length) {
+        const src = await toBase64(imageFile.files[0]);
+        showPreview(src);
+      }
+    });
   });
 };
