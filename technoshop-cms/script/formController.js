@@ -1,8 +1,8 @@
 import { category, form, modal } from "./elems.js";
 import { closeModal } from "./modalController.js";
 import { showPreview } from "./previewController.js";
-import { getCategory, getGoods, postGoods } from "./serviceAPI.js";
-import { renderRow } from "./tableView.js";
+import { editGoods, getCategory, getGoods, postGoods } from "./serviceAPI.js";
+import { renderRow, editRow } from "./tableView.js";
 import { toBase64 } from "./utils.js";
 import { API_URI } from "./const.js";
 
@@ -20,14 +20,14 @@ const updateCategory = async () => {
 export const formController = () => {
   updateCategory();
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(form);
 
     const data = {};
-    
-    for(const [key, val] of formData) {
+
+    for (const [key, val] of formData) {
       if (val) {
         data[key] = val;
       }
@@ -39,20 +39,28 @@ export const formController = () => {
       delete data.image;
     }
 
-    const goods = await postGoods(data);
-    renderRow(goods);
-    closeModal(modal, 'd-block');
-  })
+    if (data.imageSave) {
+      const goods = await editGoods(data);
+      editRow(goods);
+    } else {
+      const goods = await postGoods(data);
+      renderRow(goods);
+    }
+
+    closeModal(modal, "d-block");
+    updateCategory();
+  });
 };
 
 export const fillingForm = async (id) => {
-  const {title, category, description, display, price, image} = await getGoods(id);
+  const { title, category, description, display, price, image } =
+    await getGoods(id);
   form.title.value = title;
   form.category.value = category;
-  form.description.value = description.join('\n');
+  form.description.value = description.join("\n");
   form.display.value = display;
   form.price.value = price;
-  form.imagesave.value = image;
+  form.imageSave.value = image;
+  form.imageIdentificator.value = id;
   showPreview(`${API_URI}${image}`);
 };
-

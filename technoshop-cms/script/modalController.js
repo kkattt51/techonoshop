@@ -10,9 +10,11 @@ const openModal = (id) => {
 };
 
 export const closeModal = () => {
-  form.reset();
-  hidePreview();
   modal.classList.remove("d-block");
+  form.reset();
+  form.identificator.value = '';
+  form.imageSave.value = '';
+  hidePreview();
 };
 
 export const modalController = ({ btn, delegation }) => {
