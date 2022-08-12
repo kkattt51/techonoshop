@@ -5,7 +5,7 @@ const openModal = (modal, classOpen) => {
   modal.classList.add(classOpen);
 };
 
-const closeModal = (modal, classOpen) => {
+export const closeModal = (modal, classOpen) => {
   form.reset();
   hidePreview();
   modal.classList.remove(classOpen);
