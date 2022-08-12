@@ -6,3 +6,4 @@ export const tableGoods = document.querySelector('.table-goods');
 export const category = document.getElementById('category');
 export const modalTitle = document.querySelector('.modal-title');
 export const modalSubmitBtn = document.querySelector('.modal-submit-btn');
+export const wrapperSort = document.querySelector('.wrapper-sort');
