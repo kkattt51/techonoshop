@@ -1,7 +1,7 @@
 import { tableGoods } from "./elems.js";
 import { modalController } from "./modalController.js";
 import { getGoods, deleteGoods } from "./serviceAPI.js";
-import { modal, tableRender } from "./tableView.js";
+import { tableRender } from "./tableView.js";
 
 export const tableController = async () => {
 

@@ -1,6 +1,6 @@
-import { wrapperSort } from "./elems";
-import { getGoods } from "./serviceAPI";
-import { tableRender } from "./tableView";
+import { wrapperSort } from "./elems.js";
+import { getGoods } from "./serviceAPI.js";
+import { tableRender } from "./tableView.js";
 
 export const sortController = () => {
   wrapperSort.addEventListener("click", async ({ target }) => {
